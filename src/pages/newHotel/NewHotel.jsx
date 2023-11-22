@@ -6,6 +6,7 @@ import { useState } from "react";
 import axios from "axios"
 import { hotelInputs } from "../../formSource";
 import useFetch from "../../hooks/useFetch";
+import { api } from "../../lip/fetch-config";
 
 
 
@@ -14,7 +15,7 @@ const New = () => {
   const [info, setInfo] = useState({})
   const [rooms, setRooms] = useState([]);
 
-  const { data, loading, error } = useFetch("/rooms");
+  const { data, loading, error } = useFetch("/api/rooms");
 
   const handleChange = (e) => {
     setInfo((prev) => ({...prev, [e.target.id]:e.target.value}))
@@ -56,7 +57,7 @@ const New = () => {
         photos: list,
       };
 
-      await axios.post("/hotels", newhotel);
+      await api.post("/api/hotels", newhotel);
     } catch (err) {
       console.log(err)
     }
