@@ -20,7 +20,6 @@ function App() {
     if(!user) {
       return <Navigate to="/login"></Navigate>
     }
-
     return children
   }
   const { darkMode } = useContext(DarkModeContext);
